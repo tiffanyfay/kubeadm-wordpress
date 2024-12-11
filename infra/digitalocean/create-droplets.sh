@@ -8,8 +8,8 @@ SSH_KEY_ID=$(doctl compute ssh-key list --no-header | grep 'dropletssh' | awk '{
 
 curl -X POST -H 'Content-Type: application/json' \
     -H "Authorization: Bearer ${DO_TOKEN}" \
-    -d '{"names":["ubuntu-cp",
-        "ubuntu-wn"],
+    -d '{"names":["'"$1"'",
+        "'"$2"'"],
         "size":"s-2vcpu-2gb-amd",
         "region":"sfo3",
         "image":"ubuntu-24-10-x64",
