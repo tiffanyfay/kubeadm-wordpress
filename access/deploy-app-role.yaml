@@ -6,18 +6,14 @@ metadata:
 rules:
 - apiGroups: ["apps"]
   resources: ["deployments"]
-  # resourceNames: ["wordpress", "wordpress-mysql"]
   verbs: ["create", "get", "list"]
 - apiGroups: [""]
   resources: ["services"]
-  # resourceNames: ["wordpress", "wordpress-mysql"]
   verbs: ["create", "get", "list"]
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["create", "get", "list"]
-  # resourceNames: ["mysql-pass"]
 - apiGroups: [""]
   resources: ["persistentvolumeclaims"]
-  # resourceNames: ["wp-pv-claim", "mysql-pv-claim"]
   verbs: ["create", "get", "list"]
 
