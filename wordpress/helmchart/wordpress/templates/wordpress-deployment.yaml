@@ -29,7 +29,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress
-  # namespace: {{ .Values.namespace }}
   labels:
     app: wordpress
 spec:
@@ -46,7 +45,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress:6.2.1-apache
+      - image: {{ .Values.wordpress.image.repository }}
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST

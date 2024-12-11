@@ -29,7 +29,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress-mysql
-  namespace: {{ .Values.namespace }}
   labels:
     app: wordpress
 spec:
@@ -46,7 +45,7 @@ spec:
         tier: mysql
     spec:
       containers:
-      - image: mysql:8.0
+      - image: {{ .Values.mysql.image.repository }}
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -55,9 +54,9 @@ spec:
               name: mysql-pass
               key: password
         - name: MYSQL_DATABASE
-          value: wordpress
+          value: {{ .Values.mysql.env.database }}
         - name: MYSQL_USER
-          value: wordpress
+          value: {{ .Values.mysql.env.user }}
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
