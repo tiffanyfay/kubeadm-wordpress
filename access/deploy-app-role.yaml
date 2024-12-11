@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: wordpress
+  name: deploy-app-role
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  # resourceNames: ["wordpress", "wordpress-mysql"]
+  verbs: ["create", "get", "list"]
+- apiGroups: [""]
+  resources: ["services"]
+  # resourceNames: ["wordpress", "wordpress-mysql"]
+  verbs: ["create", "get", "list"]
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["create", "get", "list"]
+  # resourceNames: ["mysql-pass"]
+- apiGroups: [""]
+  resources: ["persistentvolumeclaims"]
+  # resourceNames: ["wp-pv-claim", "mysql-pv-claim"]
+  verbs: ["create", "get", "list"]
+
