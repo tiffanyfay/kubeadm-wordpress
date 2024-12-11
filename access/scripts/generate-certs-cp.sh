@@ -8,13 +8,12 @@ DAYS_VALID=2
 
 # Create directory for certificates
 mkdir -p $CERT_DIR
-mkdir -p ${HOME}/.kube/wordpress/
 
 # Loop through users and generate certificates
 for USER in "${USERS[@]}"; do
-    cp ${HOME}/.kube/config ${HOME}/.kube/wordpress/config-$USER
-    export KUBECONFIG="${HOME}/.kube/wordpress/config-$USER"
-    echo ">  Using kubeconfig: "${HOME}/.kube/wordpress/config-$USER""
+    cp ${HOME}/.kube/config ${HOME}/.kube/config-$USER
+    export KUBECONFIG="${HOME}/.kube/config-$USER"
+    echo ">  Using kubeconfig: "${HOME}/.kube/config-$USER""
 
     echo ">  Generating key for $USER"
     openssl genrsa -out $CERT_DIR/$USER.key 2084
