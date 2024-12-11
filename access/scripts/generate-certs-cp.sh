@@ -2,7 +2,7 @@
 set -e
 
 # Set variables
-CERT_DIR="./certs"
+CERT_DIR="${HOME}/.wordpress-certs"
 USERS=("port-forward-user" "deploy-app-user")
 DAYS_VALID=2
 
